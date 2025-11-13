@@ -168,7 +168,7 @@ func (o WardleServerOptions) RunWardleServer(stopCh <-chan struct{}) error {
 
 	server.GenericAPIServer.AddPostStartHookOrDie("start-sample-server-informers", func(context genericapiserver.PostStartHookContext) error {
 		if config.GenericConfig.SharedInformerFactory != nil {
-			config.GenericConfig.SharedInformerFactory.Start(context.StopCh)
+			config.GenericConfig.SharedInformerFactory.Start(context.Done())
 		}
 		return nil
 	})
