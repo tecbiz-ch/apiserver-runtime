@@ -21,7 +21,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
-	utilversion "k8s.io/apiserver/pkg/util/version"
+	"k8s.io/component-base/compatibility"
 
 	genericapiserver "k8s.io/apiserver/pkg/server"
 )
@@ -83,7 +83,7 @@ func (cfg *Config) Complete() CompletedConfig {
 		cfg.GenericConfig.Complete(),
 		&cfg.ExtraConfig,
 	}
-	c.GenericConfig.EffectiveVersion = utilversion.DefaultBuildEffectiveVersion()
+	c.GenericConfig.EffectiveVersion = compatibility.NewEffectiveVersionFromString("", "", "")
 
 	return CompletedConfig{&c}
 }
