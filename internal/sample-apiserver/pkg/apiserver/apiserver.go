@@ -83,7 +83,7 @@ func (cfg *Config) Complete() CompletedConfig {
 		cfg.GenericConfig.Complete(),
 		&cfg.ExtraConfig,
 	}
-	c.GenericConfig.EffectiveVersion = compatibility.NewEffectiveVersion(nil, true, nil, nil)
+	c.GenericConfig.EffectiveVersion = compatibility.NewEffectiveVersionFromString("", "", "")
 
 	return CompletedConfig{&c}
 }
